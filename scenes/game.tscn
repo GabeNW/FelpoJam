@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dtpuxcdkjqt0e"]
+
+[ext_resource type="PackedScene" uid="uid://d2ff01pqs678i" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cdmikwijm4w27" path="res://scenes/brickWall.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://chry2fn4xihfd" path="res://scenes/baseWall.tscn" id="3_lnu2h"]
+
+[node name="Game" type="Node2D" unique_id=1125249979]
+
+[node name="Player" parent="." unique_id=1969980165 instance=ExtResource("1_uwrxv")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=947452855]
+zoom = Vector2(5, 5)
+
+[node name="BaseWall" parent="." unique_id=55017932 instance=ExtResource("2_yqjtg")]
+position = Vector2(-77, 7)
+
+[node name="BaseWall2" parent="." unique_id=1263729604 instance=ExtResource("2_yqjtg")]
+position = Vector2(54, -19)
+
+[node name="BaseWall3" parent="." unique_id=686952461 instance=ExtResource("2_yqjtg")]
+position = Vector2(-41, -35)
+
+[node name="BaseWall4" parent="." unique_id=154419005 instance=ExtResource("2_yqjtg")]
+position = Vector2(78, 31)
+
+[node name="BaseWall5" parent="." unique_id=1943806 instance=ExtResource("3_lnu2h")]
+position = Vector2(0, -65)
+scale = Vector2(15, 1)
+
+[node name="BaseWall6" parent="." unique_id=492793916 instance=ExtResource("3_lnu2h")]
+position = Vector2(0, 65)
+scale = Vector2(15, 1)
+
+[node name="BaseWall7" parent="." unique_id=1229993651 instance=ExtResource("3_lnu2h")]
+position = Vector2(-115, 0)
+scale = Vector2(1, 9)
+
+[node name="BaseWall8" parent="." unique_id=1771606223 instance=ExtResource("3_lnu2h")]
+position = Vector2(115, 0)
+scale = Vector2(1, 9)
