@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dyri3ttt5qni4"]
+
+[ext_resource type="PackedScene" uid="uid://bgbqy03w1oflj" path="res://scenes/bases/base_interactable.tscn" id="1_c2ln5"]
+[ext_resource type="Script" uid="uid://dm5winu4c1iog" path="res://scripts/box.gd" id="1_ks2v0"]
+[ext_resource type="Texture2D" uid="uid://dk316i3mld2sc" path="res://sprites/placeholder.png" id="2_c2ln5"]
+
+[node name="Box" unique_id=1258435791 instance=ExtResource("1_c2ln5")]
+script = ExtResource("1_ks2v0")
+flash_time = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=144863688]
+texture_filter = 1
+texture = ExtResource("2_c2ln5")
+region_enabled = true
+region_rect = Rect2(96, 16, 16, 16)

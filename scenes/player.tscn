@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(8, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(12, 8)
+
 [node name="Player" type="CharacterBody2D" unique_id=1969980165]
 script = ExtResource("1_g2els")
 speed = 100.0
@@ -19,3 +22,9 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779040637]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1908076348]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2103394408]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_qhqgy")
