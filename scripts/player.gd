@@ -3,38 +3,93 @@ extends CharacterBody2D
 
 # Movimento
 @export var speed: float = 200
+var last_direction: Vector2 = Vector2.DOWN
 
-# Interacao
-@export var interaction_time: float = 0.2
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var interaction_area: Area2D = $Area2D
-var original_color: Color
+# Ataque
+@export var attack_range: float = 40.0
+@export var attack_cooldown: float = 0.3
 
-func perform_interaction():
-	# Feedback visual no player
-	flash_red()
-	var bodies = interaction_area.get_overlapping_bodies()
-	for body in bodies:
-		if body.is_in_group("interactable"):
-			body.interact()
-			
-func flash_red():
-	sprite.modulate = Color.RED
-	await get_tree().create_timer(interaction_time).timeout
-	sprite.modulate = original_color
+@onready var attack_ray: RayCast2D = $AttackRay
 
+var can_attack: bool = true
+
+# Cargas
+@export var max_charges := {
+	"energy": 5
+}
+
+var charges := {}
 
 # Funcoes Gerais
-func _ready():
-	original_color = sprite.modulate
+## Ataque
+func attack():
+	if not can_attack:
+		return
 	
-func _process(delta):
-	# Interacao
-	if Input.is_action_just_pressed("interact"):
-		perform_interaction()
+	can_attack = false
+	
+	# Direciona ray
+	attack_ray.target_position = last_direction * attack_range
+	attack_ray.force_raycast_update()
+	
+	show_slash()
+	
+	if attack_ray.is_colliding():
+		var body = attack_ray.get_collider()
+		
+		if body.has_method("on_melee_hit"):
+			body.on_melee_hit(self)
+	
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
 
-func _physics_process(delta: float) -> void:
-	# Movimento
-	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+func show_slash():
+	var offset = last_direction * (attack_range * 0.5)
+	
+## Carga
+func add_charge(type: String, amount: int):
+	if not charges.has(type):
+		charges[type] = 0
+	
+	charges[type] = clamp(
+		charges[type] + amount,
+		0,
+		max_charges.get(type, amount)
+	)
+	
+	print("Carga", type, ":", charges[type])	
+
+func consume_charge(type: String, amount: int) -> bool:
+	if not charges.has(type):
+		return false
+	
+	if charges[type] >= amount:
+		charges[type] -= amount
+		print("Consumiu: ", amount, type)
+		return true
+	
+	print("Carga insuficiente: ", type)
+	return false
+
+# Funcoes Essenciais
+## Start
+func _ready():
+	attack_ray.enabled = true
+	# Inicializa todas as cargas com 0
+	for type in max_charges.keys():
+		charges[type] = 0
+
+## Update
+func _process(delta):
+	if Input.is_action_just_pressed("attack"):
+		attack()
+
+## FixedUpdate
+func _physics_process(delta):
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if direction != Vector2.ZERO:
+		last_direction = direction.normalized()
+	
 	velocity = direction * speed
 	move_and_slide()
