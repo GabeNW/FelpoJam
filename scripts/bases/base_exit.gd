@@ -1,25 +1,28 @@
 extends Node2D
 
-@export var target_level : PackedScene
-@export var spawn_id : String
+@export var target_level_path : String = ""
+@export var spawn_id : String = ""
 
-@onready var area = $Area2D
-@onready var wall = $StaticBody2D
+@onready var area: Area2D = $Area2D
+
+var transitioning := false
 
 func _ready():
 	area.body_entered.connect(_on_body_entered)
-
-	# Se não tiver level configurado, vira parede pura
-	if target_level == null:
+	if target_level_path == "":
 		area.monitoring = false
 
 func _on_body_entered(body):
-	print("Colidiu com:", body.name)
-	
+	if transitioning:
+		return
 	if not body.is_in_group("player"):
 		return
-	
-	print("Trocando level")
-	
-	if target_level:
-		LevelManager.load_level_scene(target_level, spawn_id)
+	if target_level_path == "":
+		return
+
+	transitioning = true
+	LevelManager.call_deferred(
+		"load_level_by_path",
+		target_level_path,
+		spawn_id
+	)

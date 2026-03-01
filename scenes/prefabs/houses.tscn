@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bx662uud1w17u"]
+
+[ext_resource type="Texture2D" uid="uid://b7k3dpjp1a301" path="res://assets/Cenario/casas 1.png" id="1_cg554"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hknfx"]
+size = Vector2(132, 69.5)
+
+[node name="houses" type="Node2D" unique_id=1603882063]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=391919633]
+scale = Vector2(0.038, 0.038)
+texture = ExtResource("1_cg554")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=659353766]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=829994755]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_hknfx")

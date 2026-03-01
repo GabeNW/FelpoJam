@@ -1,20 +1,49 @@
-[gd_scene format=3 uid="uid://boi26ww5h6lh8"]
+[gd_scene format=3 uid="uid://desgqm5vufc7s"]
 
-[ext_resource type="Texture2D" uid="uid://bx5uoco421yoy" path="res://assets/Cenario/cenas/rio.png" id="1_ns31n"]
-[ext_resource type="PackedScene" uid="uid://dnvh3eq7l0hdk" path="res://scenes/bases/base_exit.tscn" id="2_g8nod"]
+[ext_resource type="Texture2D" uid="uid://bx4vbjqp0p4t3" path="res://assets/Cenario/background grama/fim - baixo.png" id="1_ns31n"]
+[ext_resource type="PackedScene" uid="uid://dnvh3eq7l0hdk" path="res://scenes/bases/base_exit.tscn" id="2_nwbdl"]
 
-[node name="Level2" type="Node2D" unique_id=1283338306]
+[node name="Level2" type="Node2D" unique_id=1130785644]
 
-[node name="CameraAnchor" type="Marker2D" parent="." unique_id=448443066]
+[node name="CameraAnchor" type="Marker2D" parent="." unique_id=2105281890]
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1021590224]
+[node name="Background" type="Sprite2D" parent="." unique_id=1443017042]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ns31n")
 
-[node name="Collisions" type="Node2D" parent="." unique_id=1951544028]
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=952063123]
 
-[node name="Exits" type="Node2D" parent="." unique_id=1947471501]
+[node name="right_spawn" type="Node2D" parent="SpawnPoints" unique_id=1096836760]
+position = Vector2(180, 0)
 
-[node name="BaseExit" parent="Exits" unique_id=9171014 instance=ExtResource("2_g8nod")]
+[node name="left_spawn" type="Node2D" parent="SpawnPoints" unique_id=1452778772]
+position = Vector2(-180, 0)
+
+[node name="down_spawn" type="Node2D" parent="SpawnPoints" unique_id=2063029335]
+position = Vector2(0, 85)
+
+[node name="up_spawn" type="Node2D" parent="SpawnPoints" unique_id=2091864528]
+position = Vector2(0, -85)
+
+[node name="Exits" type="Node2D" parent="." unique_id=1781167606]
+
+[node name="right_exit" parent="Exits" unique_id=9171014 instance=ExtResource("2_nwbdl")]
+position = Vector2(200, 0)
+scale = Vector2(1, 12)
+spawn_id = "left_spawn"
+
+[node name="left_exit" parent="Exits" unique_id=1832334537 instance=ExtResource("2_nwbdl")]
 position = Vector2(-200, 0)
 scale = Vector2(1, 12)
+spawn_id = "right_spawn"
+
+[node name="down_exit" parent="Exits" unique_id=1251473280 instance=ExtResource("2_nwbdl")]
+position = Vector2(0, 116)
+scale = Vector2(20, 1)
+spawn_id = "up_spawn"
+
+[node name="up_exit" parent="Exits" unique_id=375935170 instance=ExtResource("2_nwbdl")]
+position = Vector2(0, -116)
+scale = Vector2(20, 1)
+target_level_path = "res://scenes/gameScenes/Level1.tscn"
+spawn_id = "down_spawn"

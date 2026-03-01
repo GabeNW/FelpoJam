@@ -444,7 +444,8 @@ size = Vector2(10.75, 25.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(6, 6.5)
 
-[node name="Player" type="CharacterBody2D" unique_id=1969980165 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1969980165 groups=["player"]]
+collision_mask = 6
 script = ExtResource("1_g2els")
 speed = 100.0
 attack_range = 15.0
