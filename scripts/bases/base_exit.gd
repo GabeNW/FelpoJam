@@ -14,8 +14,12 @@ func _ready():
 		area.monitoring = false
 
 func _on_body_entered(body):
-	if body.name != "Player":
+	print("Colidiu com:", body.name)
+	
+	if not body.is_in_group("player"):
 		return
+	
+	print("Trocando level")
 	
 	if target_level:
 		LevelManager.load_level_scene(target_level, spawn_id)

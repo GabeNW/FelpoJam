@@ -1,22 +1,20 @@
-[gd_scene format=3 uid="uid://raftbx6ljwro"]
+[gd_scene format=3 uid="uid://boi26ww5h6lh8"]
 
-[ext_resource type="Texture2D" uid="uid://b0givf5vcp0g5" path="res://assets/Cenario/background grama/fim - cima.png" id="1_ojej8"]
+[ext_resource type="Texture2D" uid="uid://bx5uoco421yoy" path="res://assets/Cenario/cenas/rio.png" id="1_ns31n"]
 [ext_resource type="PackedScene" uid="uid://dnvh3eq7l0hdk" path="res://scenes/bases/base_exit.tscn" id="2_g8nod"]
-[ext_resource type="PackedScene" uid="uid://boi26ww5h6lh8" path="res://scenes/gameScenes/Level2.tscn" id="3_ojej8"]
 
-[node name="Level1" type="Node2D" unique_id=1283338306]
+[node name="Level2" type="Node2D" unique_id=1283338306]
 
 [node name="CameraAnchor" type="Marker2D" parent="." unique_id=448443066]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1021590224]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_ojej8")
+texture = ExtResource("1_ns31n")
 
 [node name="Collisions" type="Node2D" parent="." unique_id=1951544028]
 
 [node name="Exits" type="Node2D" parent="." unique_id=1947471501]
 
 [node name="BaseExit" parent="Exits" unique_id=9171014 instance=ExtResource("2_g8nod")]
-position = Vector2(200, 0)
+position = Vector2(-200, 0)
 scale = Vector2(1, 12)
-target_level = ExtResource("3_ojej8")
