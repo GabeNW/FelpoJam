@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bms5kul8cttgj"]
+
+[ext_resource type="Script" uid="uid://c8dt3nbuy8mgd" path="res://scripts/cost_object.gd" id="1_7x6o0"]
+[ext_resource type="Texture2D" uid="uid://dk316i3mld2sc" path="res://sprites/placeholder.png" id="2_ny7q2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oosp"]
+size = Vector2(16, 16)
+
+[node name="CostObject" type="StaticBody2D" unique_id=537679209]
+script = ExtResource("1_7x6o0")
+charge_cost = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=629505486]
+texture_filter = 1
+texture = ExtResource("2_ny7q2")
+region_enabled = true
+region_rect = Rect2(184, 56, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1799035734]
+shape = SubResource("RectangleShape2D_7oosp")

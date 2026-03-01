@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bk66uprp5jwm0"]
+
+[ext_resource type="PackedScene" uid="uid://d2ff01pqs678i" path="res://scenes/prefabs/player.tscn" id="1_7ms5i"]
+[ext_resource type="Script" uid="uid://cfpw4h3kekja4" path="res://scripts/managers/game.gd" id="1_usqoi"]
+
+[node name="Game" type="Node2D" unique_id=1714747678]
+script = ExtResource("1_usqoi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2104818628]
+zoom = Vector2(5, 5)
+
+[node name="Player" parent="." unique_id=1969980165 instance=ExtResource("1_7ms5i")]
+
+[node name="LevelContainer" type="Node2D" parent="." unique_id=1799831306]

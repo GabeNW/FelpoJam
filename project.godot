@@ -11,20 +11,21 @@ config_version=5
 [application]
 
 config/name="FelpoJam"
-run/main_scene="uid://di1352qilgp6j"
+run/main_scene="uid://bk66uprp5jwm0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Gamemanager="*uid://nksvereffqwa"
+GameManager="*uid://nksvereffqwa"
+LevelManager="*uid://c7seva8fpa6mi"
+SaveManager="*uid://bemh2cwp535ej"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
 
 [input]
 

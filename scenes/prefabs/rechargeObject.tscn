@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c3c5hav58e757"]
+
+[ext_resource type="Script" uid="uid://uxu8brtpun15" path="res://scripts/recharge_object.gd" id="1_x8w3d"]
+[ext_resource type="Texture2D" uid="uid://dk316i3mld2sc" path="res://sprites/placeholder.png" id="2_r41xp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8w3d"]
+size = Vector2(16, 16)
+
+[node name="RechargeObject" type="StaticBody2D" unique_id=1923917327]
+script = ExtResource("1_x8w3d")
+recharge_amount = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2037976100]
+texture_filter = 1
+texture = ExtResource("2_r41xp")
+region_enabled = true
+region_rect = Rect2(192, 16, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=68808056]
+shape = SubResource("RectangleShape2D_x8w3d")

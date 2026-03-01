@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dnvh3eq7l0hdk"]
+
+[ext_resource type="Script" uid="uid://djhnyebr7tujx" path="res://scripts/bases/base_exit.gd" id="1_dfgef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfgef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_piyfi"]
+
+[node name="BaseExit" type="Node2D" unique_id=9171014]
+script = ExtResource("1_dfgef")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1081652499]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1525857093]
+shape = SubResource("RectangleShape2D_dfgef")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=927440938]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1263369266]
+shape = SubResource("RectangleShape2D_piyfi")
